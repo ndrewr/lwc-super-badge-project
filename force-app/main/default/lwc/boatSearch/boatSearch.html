@@ -1,0 +1,67 @@
+<template>
+    <!-- <lightning-layout multiple-rows>
+      <lightning-layout-item size="12">
+        <lightning-card title="Find a Boat">
+          <lightning-button 
+            label="New Boat" 
+            slot="actions" 
+            onclick={createNewBoat}
+          ></lightning-button>
+          <p class="slds-var-p-horizontal_small">
+            <c-boat-search-form
+              onsearch={searchBoats}
+            ></c-boat-search-form>
+          </p>
+        </lightning-card>
+      </lightning-layout-item>
+      <lightning-layout-item size="12" class="slds-p-top_small slds-is-relative">
+        <lightning-spinner 
+          if:true={isLoading} 
+          alternative-text = "Loading" 
+          variant="brand"
+        ></lightning-spinner>
+        <c-boat-search-results
+        ></c-boat-search-results>
+      </lightning-layout-item>
+    </lightning-layout> -->
+
+    <lightning-layout multiple-rows>
+      <!-- Top -->
+      <lightning-layout-item size="12">
+        <lightning-card title="Find a Boat">
+          <lightning-button 
+            label="New Boat" 
+            slot="actions" 
+            onclick={createNewBoat}
+          ></lightning-button>
+          <p class="slds-var-p-horizontal_small">
+            <c-boat-search-form
+              onsearch={searchBoats}
+            ></c-boat-search-form>
+          </p>
+        </lightning-card>
+      </lightning-layout-item>
+      <!-- Bottom -->
+      <lightning-layout-item size="12" class="slds-p-top_small slds-is-relative">
+        <!-- Spinner goes here -->
+        <template if:true={isLoading}>
+          <!-- <div style="
+            position: relative;
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+          "> -->
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+          <!-- </div>     -->
+        </template>
+        <!-- boatSearchResults goes here -->
+        <c-boat-search-results
+          onloading={handleLoading}
+          ondoneloading={handleDoneLoading}
+        ></c-boat-search-results>
+
+      </lightning-layout-item>
+    </lightning-layout>
+    
+  </template>
+  

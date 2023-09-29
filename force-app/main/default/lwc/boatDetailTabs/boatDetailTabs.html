@@ -1,0 +1,54 @@
+<template>
+    <template if:false={wiredRecord.data}>
+      <!-- lightning card for the label when wiredRecord has no data goes here  -->
+      <lightning-card>
+        <span class="slds-text-align_center no-boat-height">
+            {label.labelPleaseSelectABoat}
+        </span>
+      </lightning-card>
+    </template>
+    <template if:true={wiredRecord.data}>
+       <!-- lightning card for the content when wiredRecord has data goes here  -->
+       <!-- Inside a scoped <lightning-tabset>, add a <lightning-tab> using the custom label Details as the tab label. Then inside the tab, add a <lightning-card> to receive the details. Use the boatName() value for the title and detailsTabIconName() for the icon name. -->
+         <lightning-tabset variant="scoped">
+          <lightning-tab label={label.labelDetails}>
+             <lightning-card title={boatName} icon-name={detailsTabIconName}>
+                <lightning-button slot="actions" label={label.labelFullDetails} onclick={navigateToRecordViewPage}></lightning-button>
+
+                <div class="slds-p-horizontal_small">
+                    <lightning-record-view-form
+                        record-id={boatId} 
+                        object-api-name="Boat__c" 
+                        density="compact"
+                    >
+                        <div class="slds-grid slds-wrap slds-p-bottom_small">
+                            <!-- <div class="slds-col slds-size_1-of-2"> -->
+                                <!-- <lightning-output-field field-name={boatNameField}></lightning-output-field> -->
+                                <lightning-output-field field-name="BoatType__c"></lightning-output-field>
+                                <lightning-output-field field-name="Length__c"></lightning-output-field>
+                                <lightning-output-field field-name="Price__c"></lightning-output-field>
+                                <lightning-output-field field-name="Description__c"></lightning-output-field>
+                            <!-- </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <lightning-output-field field-name={descriptionField}></lightning-output-field>
+                            </div> -->
+                        </div>
+                    </lightning-record-view-form>
+                </div>
+             </lightning-card>
+          </lightning-tab>
+          <!-- Inside the same scoped <lightning-tabset>, add a <lightning-tab> using the custom label Reviews as the tab label. Then inside the tab, add a <c-boat-reviews> component. Pass the boatId to the component using the boatId attribute. -->
+          <lightning-tab label={label.labelReviews} value="reviews">
+             <!-- <c-boat-reviews boat-id={boatId}></c-boat-reviews> -->
+          </lightning-tab>
+          <!-- Inside the same scoped <lightning-tabset>, add a <lightning-tab> using the custom label Add Review as the tab label. Then inside the tab, add a <c-boat-add-review-form> component. Pass the boatId to the component using the boatId attribute. -->
+          <lightning-tab label={label.labelAddReview}>
+             <!-- <c-boat-add-review-form
+                boat-id={boatId} 
+                oncreatereview={handleReviewCreated}
+            ></c-boat-add-review-form> -->
+          </lightning-tab>
+         </lightning-tabset>
+    </template>
+  </template>
+  
