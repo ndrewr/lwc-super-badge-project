@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>58.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__HomePage</target>
+    </targets>
+    <targetConfigs>  
+        <targetConfig targets="lightning__RecordPage">
+            <!-- <objects>
+                <object>Boat__c</object>
+            </objects> -->
+            <!-- <property name="Boat__c.BoatType__c" type="String" default="Sailboat" label="Enter the Boat Type"/>
+            <property name="Length__c" type="Integer" label="Enter the Boat Length"/> -->
+            <!-- <property name="Price__c" type="Integer" label="Enter the Boat Price"/> -->
+            <property name="similarBy" type="String" datasource="Type,Price,Length" label="Enter the property you want to compare by"/>
+
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>
